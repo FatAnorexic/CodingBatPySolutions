@@ -24,4 +24,31 @@ def centered_average(nums):
   nums.pop(nums.index(min(nums)))
   nums.pop(nums.index(max(nums)))
   return (int(sum(nums)/len(nums)))
-  
+
+#4-------------------------------------------------------------------------------------------------------
+"""Return the sum of the numbers in the array, returning 0 for an empty array. 
+  Except the number 13 is very unlucky, so it does not count and numbers that come immediately after a 13 also do not count."""
+
+def sum13(nums):
+  nums+=[0]
+  return sum(i for j, i in enumerate(nums) if i!=13 and nums[j-1]!=13)
+
+#5------------------------------------------------------------------------------------------------------
+"""Return the sum of the numbers in the array, except ignore sections of numbers starting with a 6 and extending to the next 7 
+   (every 6 will be followed by at least one 7). Return 0 for no numbers."""
+
+def sum67(nums):
+  flag=False
+  sum=0
+  for i in nums:
+    if i==6:
+      flag=True
+      continue
+      
+    if(i==7 and flag==True):
+      flag=False
+      continue
+      
+    if(flag==False):
+      sum+=i
+  return sum
